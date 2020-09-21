@@ -1,0 +1,20 @@
+version: "3"
+services:
+  db:
+    image: postgres:9.5.22-alpine
+    volumes:
+      - ./railsapp/tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    restart: always
+  web:
+    build: .
+    volumes:
+      - ./railsapp:/app
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    command:  bash -c "bundle exec rails s -p 3000 -b '0.0.0.0'"
