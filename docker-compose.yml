@@ -1,5 +1,6 @@
 version: "3"
 services:
+
   db:
     image: postgres:9.5.22-alpine
     volumes:
@@ -9,6 +10,7 @@ services:
     ports:
       - "5432:5432"
     restart: always
+
   web:
     build: .
     volumes:
