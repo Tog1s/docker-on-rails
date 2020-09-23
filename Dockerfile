@@ -1,4 +1,8 @@
 FROM ruby:2.7.1
+
+# Pre build image
+# FROM tog1s/rails:2.7.1
+
 RUN apt-get update -qq \
 	&& apt-get install -y postgresql-client \
 	&& gem install bundler \

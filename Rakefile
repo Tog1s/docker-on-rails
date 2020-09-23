@@ -6,7 +6,12 @@ namespace :docker do
 
   desc 'up docker container'
   task :up do
-    system "docker-compose up"
+    system "docker-compose up -d"
+  end
+
+  desc 'output logs'
+  task :logs do
+    system "docker-compose logs web"
   end
 
   desc 'down docker container'
@@ -18,10 +23,12 @@ namespace :docker do
   task :yarn do
     system "docker-compose run web yarn install --check-files"
   end
+end
 
+namespace :rails do
   desc 'run rails test'
   task :test do
-    system "docker-compose run web rails test"
+    system "docker-compose exec web rails test"
   end
 
   namespace :db do
