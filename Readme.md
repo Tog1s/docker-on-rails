@@ -18,21 +18,49 @@ Minimal Docker compose configuration for development on rails 6.
     development:
       <<: *default
       database: app_development
+    
+    test:
+      <<: *default
+      database: app_test
   ```
-- Run build
+- Run build.
   ```bash
     rake docker:build
   ```
-- Run yarn install
+  ```bash
+    make build
+  ```
+- Run yarn install.
   ```bash
     rake docker:yarn
   ```
-- Run docker up to start application
+  ```bash
+    make yarn
+  ```
+- Run docker up to start containers.
   ```bash
     rake docker:up
   ```
-- For create database and migration
+  ```bash
+    make up
+  ```
+- Run docker down to stop containers.
+  ```bash
+    rake docker:down
+  ```
+  ```bash
+    make down
+  ```
+- For create database and migration.
   ```bash
     rake docker:db:create
     rake docker:db:migrate
+  ```
+  ```bash
+    make db-create
+    make db-migrate
+  ```
+- For run any rails command use dce (docker-compose exec web).
+  ```bash
+    make dce rails test
   ```
