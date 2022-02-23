@@ -15,7 +15,6 @@ RUN apt-get update -qq \
 ENV APP_HOME /app
 WORKDIR $APP_HOME
 
-COPY ./railsapp/Gemfile $APP_HOME/
-COPY ./railsapp/Gemfile.lock $APP_HOME/
+ADD ./railsapp/Gemfile* $APP_HOME/
 
 RUN bundle install
